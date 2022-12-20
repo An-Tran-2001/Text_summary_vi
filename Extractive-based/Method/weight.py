@@ -19,7 +19,8 @@ def weight_solve(text):
     #  Tính điểm cho từng câu / Calculate the score for each sentence
     score = (A.dot(weighted_avg)) / weighted_avg.sum()
     #  Sắp xếp câu theo thứ tự giảm dần / Sort sentences in descending order
-    ranked_sentences = sorted(((score[i],s) for i,s in enumerate(sentences_vec)), reverse=True)
+    ranked_sentences = sorted(((score[i],s) for i,s in enumerate(sentences_vec)), key=lambda x: x[0], reverse=True)
+    # ranked_sentences = sorted(((score[i],s) for i,s in enumerate(sentences_vec)), reverse=True)
     summary_wv = ''
     for i in range(len(ranked_sentences)):
         if ranked_sentences[i][0] > 1.05 * weighted_avg.mean():
