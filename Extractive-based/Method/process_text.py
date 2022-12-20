@@ -17,7 +17,10 @@ def sent2vec(s):
             continue
     M = np.array(M)
     v = M.sum(axis=0)
-    vec = v/np.sqrt((v ** 2).sum())
+    try:
+        vec = v / np.sqrt((v ** 2).sum())
+    except:
+        pass
     return vec
 
 #  chuyển văn bản thành từng câu / Convert text to sentences
